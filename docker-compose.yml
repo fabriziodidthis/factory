@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  database:
+    container_name: mysql
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      # MYSQL_AUTHENTICATION_PLUGIN: caching_sha2_password
+      MYSQL_AUTH_PLUGIN: caching_sha2_password
+    command: [mysqld, --default-authentication-plugin=caching_sha2_password]
+    volumes:
+      - ./.docker/db:/var/lib/mysql
+      - ./mysql.cnf:/etc/mysql/mysql.cnf
+    healthcheck:
+      test: ['CMD', 'mysqladmin', '-usequelize_test', '-psequelize_test', 'status']
+      interval: 3s
+      timeout: 1s
+      retries: 10
+    restart: always
+    networks:
+      - factory
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - factory
+    depends_on:
+      - database
+
+volumes:
+  db-volume:
+networks:
+  factory:
+    driver: bridge

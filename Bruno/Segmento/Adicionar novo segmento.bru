@@ -1,0 +1,18 @@
+meta {
+  name: Adicionar novo segmento
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/segmento/novo
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "segmentName": "segmento01",
+    "price": "1.99"
+  }
+}

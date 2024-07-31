@@ -1,0 +1,9 @@
+/factory/todas:
+  get:
+    $ref: ./factory/findAll.yaml
+/factory/nova:
+  post:
+    $ref: ./factory/createNew.yaml
+/factory/encontrarpor/{id}:
+  get:
+    $ref: ./factory/findByID.yaml

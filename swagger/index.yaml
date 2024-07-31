@@ -1,0 +1,20 @@
+openapi: '3.1.0'
+info:
+  version: 0.0.1
+  title: Documentação para API de confecção
+  description: API para gerenciar pedidos feitos com base no resultado de - segmento * (saida - retorno)
+  contact:
+    name: We Are RKDev
+    url: https://github.com/wearerkdev
+    email: we.are.rkdev@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+schemes: [http, https]
+host: http://localhost:3000
+paths:
+  $ref: ./paths/index.yaml
+servers:
+  development:
+    url: 'http://localhost:3000/'
+    description: URL de desenvolvimento

@@ -1,0 +1,37 @@
+meta {
+  name: Adicionar nova confeccao
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/confeccao/nova
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "factoryName": "confeccao 01",
+    "address": "endereco 01",
+    "phoneNumber": "123456789",
+    "isNumberWhatsapp": true
+  }
+}
+
+script:pre-request {
+  req.setBody({
+    factoryName: "confeccao 01",
+    address: "endereco 01",
+    phoneNumber: "12345678901",
+    isNumberWhatsapp: true
+  });
+  
+  req.setBody({
+    factoryName: "confeccao 02",
+    address: "endereco 02",
+    phoneNumber: "12345678902",
+    isNumberWhatsapp: true
+  });
+  
+}

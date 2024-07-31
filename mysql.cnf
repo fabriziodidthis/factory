@@ -1,0 +1,4 @@
+[mysqld]
+skip-log-bin
+log_error_verbosity=2 
+general_log=OFF

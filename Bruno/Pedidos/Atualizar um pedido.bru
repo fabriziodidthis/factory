@@ -1,0 +1,19 @@
+meta {
+  name: Atualizar um pedido
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/pedido/atualizar/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "quantidadeDeSaida": 100,
+    "quantidadeDeRetorno": 50,
+    "saidaParaCostura": "2024-02-20T18:36:40.170Z"
+  }
+}

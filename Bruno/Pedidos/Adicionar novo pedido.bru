@@ -1,0 +1,64 @@
+meta {
+  name: Adicionar novo pedido
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/pedido/novo
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "segmentName": "segmento 02",
+    "factoryName": "confeccao 02",
+    "saidaParaCostura": "2024-02-01 17:29:25",
+    "quantidadeDeSaida": 15,
+    "retiradaDaCostura": "2024-02-01 17:29:25",
+    "quantidadeDeRetorno": 0
+  }
+}
+
+script:pre-request {
+  const order01 = {
+    segmentName: "segmento 01",
+    factoryName: "confeccao 01",
+    saidaParaCostura: "2024-02-01 17:29:25",
+    quantidadeDeSaida: 10,
+    retiradaDaCostura: "2024-02-01 17:29:25",
+    quantidadeDeRetorno: 0
+  };
+  req.setBody(order01);
+  
+  const order02 = {
+    segmentName: "segmento 02",
+    factoryName: "confeccao 01",
+    saidaParaCostura: "2024-02-01 17:29:25",
+    quantidadeDeSaida: 15,
+    retiradaDaCostura: "2024-02-01 17:29:25",
+    quantidadeDeRetorno: 0
+  };
+  req.setBody(order02);
+  
+  const order03 = {
+    segmentName: "segmento 01",
+    factoryName: "confeccao 02",
+    saidaParaCostura: "2024-02-01 17:29:25",
+    quantidadeDeSaida: 20,
+    retiradaDaCostura: "2024-02-01 17:29:25",
+    quantidadeDeRetorno: 0
+  };
+  req.setBody(order03);
+  
+  const order04 = {
+    segmentName: "segmento 02",
+    factoryName: "confeccao 02",
+    saidaParaCostura: "2024-02-01 17:29:25",
+    quantidadeDeSaida: 25,
+    retiradaDaCostura: "2024-02-01 17:29:25",
+    quantidadeDeRetorno: 0
+  };
+  req.setBody(order04);
+}

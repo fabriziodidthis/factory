@@ -1,0 +1,21 @@
+get:
+  responses:
+    200:
+      description: Retorna todos os segmentos
+      schema:
+        id: string
+        segmentID: string
+        segmentName: string
+        price: integer
+
+  200:
+    description: Todas as confeccoes
+    schema:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number

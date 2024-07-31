@@ -1,0 +1,305 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Documentação para API de confecção",
+    "description": "API para gerenciar pedidos feitos com base no resultado de - segmento * (saida - retorno)",
+    "contact": {
+      "name": "We Are RKDev",
+      "url": "https://github.com/wearerkdev",
+      "email": "we.are.rkdev@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "host": "http://localhost:3000",
+  "paths": {
+    "/factory/todas": {
+      "get": {
+        "tags": [
+          "Confecção"
+        ],
+        "summary": "Retorna todas as confecções",
+        "description": "Retorna todas as confecções",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Todas as confecções",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "default": 1,
+                      "example": 1
+                    },
+                    "factoryID": {
+                      "type": "string",
+                      "example": "b7d1808d-9f9b-4513-aaa8-da370411f418"
+                    },
+                    "factoryName": {
+                      "type": "string",
+                      "example": "Confecção da maria"
+                    },
+                    "address": {
+                      "type": "string",
+                      "example": "Endereco da confecção da Maria"
+                    },
+                    "phoneNumber": {
+                      "type": "string",
+                      "example": 11987654321
+                    },
+                    "isNumberWhatsapp": {
+                      "type": "boolean",
+                      "required": false,
+                      "example": false
+                    },
+                    "observation": {
+                      "type": "string",
+                      "required": false,
+                      "default": "Alguma observacao opcional sobre a confecção da Maria"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "summary": "Se acontecer algum erro (que não seja de servidor) para retornar todas as confecções",
+            "description": "Algum tipo de erro ao retornar todas as confecções",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Algum erro aconteceu"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro no servidor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "example": 500
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Servidor com erro"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/factory/nova": {
+      "post": {
+        "tags": [
+          "Confecção"
+        ],
+        "summary": "Cria uma nova confecção / fábrica",
+        "description": "Possui campos para poder criar uma nova confecção de acordo com a necessidade",
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "createNewFactory",
+        "requestBody": {
+          "description": "Objeto da nova confecção",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "factoryName",
+                  "address",
+                  "phoneNumber"
+                ],
+                "properties": {
+                  "factoryName": {
+                    "type": "string",
+                    "default": "Confecção da maria",
+                    "example": "Confecção da maria"
+                  },
+                  "address": {
+                    "type": "string",
+                    "default": "Endereco da confecção da Maria",
+                    "example": "Endereco da confecção da Maria"
+                  },
+                  "phoneNumber": {
+                    "type": "string",
+                    "default": 11987654321,
+                    "example": 11987654321
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Nova confecção criada com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "factoryName",
+                    "address",
+                    "phoneNumber"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Confecção criada com sucesso."
+                    },
+                    "createNewFactory": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "factoryID": {
+                          "type": "string",
+                          "example": "2daec979-7633-4cb7-981a-2a10a1568865"
+                        },
+                        "factoryName": {
+                          "type": "string",
+                          "example": "Confecção da Maria"
+                        },
+                        "address": {
+                          "type": "string",
+                          "default": "Endereco da confecção da Maria"
+                        },
+                        "phoneNumber": {
+                          "type": "string",
+                          "example": 11987654321
+                        },
+                        "isNumberWhatsapp": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "createdAt": {
+                          "type": "date-time",
+                          "example": "2024-02-24T18:52:39.684Z"
+                        },
+                        "updatedAt": {
+                          "type": "date-time",
+                          "example": "2024-02-24T18:52:39.684Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Algum tipo de erro ao criar nova confecção",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Todos os campos devem ser preenchidos"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/factory/encontrarpor/{id}": {
+      "get": {
+        "tags": [
+          "Confecção"
+        ],
+        "summary": "Retorna dados da confecção pelo seu ID",
+        "description": "Retorna dados da confecção pelo seu ID",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID da confecção para busca",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna dados da confecção pelo seu ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/paths/~1factory~1todas/get/responses/200/content/application~1json/schema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Busca de confecção por ID caso não seja encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Confecção com id {id} não foi encontrada.",
+                      "example": "Confecção com id 1 não foi encontrada."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": {
+    "development": {
+      "url": "http://localhost:3000/",
+      "description": "URL de desenvolvimento"
+    }
+  }
+}

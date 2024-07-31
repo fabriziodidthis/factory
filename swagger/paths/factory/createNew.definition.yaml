@@ -1,0 +1,36 @@
+type: object
+required:
+  - factoryName
+  - address
+  - phoneNumber
+properties:
+  message:
+    type: string
+    example: Confecção criada com sucesso.
+  createNewFactory:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      factoryID:
+        type: string
+        example: 2daec979-7633-4cb7-981a-2a10a1568865
+      factoryName:
+        type: string
+        example: Confecção da Maria
+      address:
+        type: string
+        default: Endereco da confecção da Maria
+      phoneNumber:
+        type: string
+        example: 11987654321
+      isNumberWhatsapp:
+        type: boolean
+        example: true
+      createdAt:
+        type: date-time
+        example: '2024-02-24T18:52:39.684Z'
+      updatedAt:
+        type: date-time
+        example: '2024-02-24T18:52:39.684Z'

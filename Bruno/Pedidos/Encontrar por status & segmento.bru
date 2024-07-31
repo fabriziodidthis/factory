@@ -1,0 +1,16 @@
+meta {
+  name: Encontrar por status & segmento
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseURL}}/pedido/encontrarpor/?status=costurando&segmento=dry
+  body: none
+  auth: none
+}
+
+query {
+  status: costurando
+  segmento: dry
+}

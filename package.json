@@ -1,0 +1,56 @@
+{
+  "name": "factory",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/fabriziodidthis/factory.git",
+  "license": "MIT",
+  "author": {
+    "name": "Fabrizio Andre",
+    "email": "fabriziodidthis@gmail.com",
+    "url": "https://www.fabriziodidthis.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/fabriziodidthis/factory/issues"
+  },
+  "homepage": "https://github.com/fabriziodidthis/factory#readme",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon -r dotenv/config src/index.js",
+    "migration:create": "npx sequelize-cli migration:create --name ${name}",
+    "migration:run": "npx sequelize-cli db:migrate",
+    "migration:undo": "npx sequelize-cli db:migrate:undo",
+    "migration:undo:all": "npx sequelize-cli db:migrate:undo:all",
+    "model:create": "npx sequelize-cli model:generate --name ${name} --attributes user:string",
+    "docker:run": "docker compose -p factory-back -f docker-compose.yml up",
+    "docker:build": "docker compose -p factory-back -f docker-compose.yml up --build",
+    "docker:down": "docker compose down",
+    "docker:stop": "docker compose stop",
+    "docker:start": "docker compose start",
+    "docker:del": "docker system prune --all --volumes --force",
+    "docs": "swagger-cli bundle ./swagger/index.yaml --outfile ./swagger/index.json"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "hpp": "^0.2.3",
+    "joi": "^17.13.3",
+    "mysql2": "^3.9.1",
+    "sequelize": "^6.37.1",
+    "swagger-ui-express": "^5.0.0",
+    "xss": "^1.0.14"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.3",
+    "sequelize-cli": "^6.6.2",
+    "swagger-cli": "^4.0.4"
+  },
+  "engines": {
+    "node": ">=20.10.0",
+    "npm": ">= 10.0.0"
+  }
+}

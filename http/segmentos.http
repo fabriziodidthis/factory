@@ -1,0 +1,44 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}/segmento
+@contentType = application/json
+@createdAt = {{$datetime iso8601}}
+
+
+# @name Segmento
+
+### Adiciona segmento 01
+POST http://{{host}}/novo HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "segmentName": "segmento 01",
+  "price": "1.99"
+}
+
+### Adiciona segmento 02
+POST http://{{host}}/novo HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "segmentName": "segmento 02",
+  "price": "2.99"
+}
+
+### Encontrar todos os segmentos
+GET http://{{host}}/encontrarpor/todos HTTP/1.1
+
+### Encontrar segmento por ID
+GET http://{{host}}/encontrarpor/1 HTTP/1.1
+
+### Deletar segmento por ID
+DELETE http://{{host}}/deletar/1 HTTP/1.1
+
+### Atualizar dados de um segmento
+PUT http://{{host}}/atualizar/1 HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "segmentName":"dry1",
+  "price": 155.55
+}

@@ -1,0 +1,67 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}/pedido
+@contentType = application/json
+@createdAt = {{$datetime iso8601}}
+
+# @name Pedido
+
+### Adiciona pedido 01
+POST http://{{host}}/novo HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "factoryName": "confeccao 01",
+  "segmentName": "segmento 01",
+  "saidaParaCostura": "2024-02-01 17:29:25",
+  "quantidadeDeSaida": 15,
+  "retiradaDaCostura": "2024-02-01 17:29:25",
+  "quantidadeDeRetorno": 0
+}
+
+### Adiciona pedido 02
+POST http://{{host}}/novo HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "factoryName": "confeccao 01",
+  "segmentName": "segmento 02",
+  "saidaParaCostura": "2024-02-01 17:29:25",
+  "quantidadeDeSaida": 15,
+  "retiradaDaCostura": "2024-02-01 17:29:25",
+  "quantidadeDeRetorno": 0
+}
+
+### Adiciona pedido 03
+POST http://{{host}}/novo HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "factoryName": "confeccao 02",
+  "segmentName": "segmento 01",
+  "saidaParaCostura": "2024-02-01 17:29:25",
+  "quantidadeDeSaida": 15,
+  "retiradaDaCostura": "2024-02-01 17:29:25",
+  "quantidadeDeRetorno": 0
+}
+
+### Adiciona pedido 04
+POST http://{{host}}/novo HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "factoryName": "confeccao 02",
+  "segmentName": "segmento 02",
+  "saidaParaCostura": "2024-02-01 17:29:25",
+  "quantidadeDeSaida": 15,
+  "retiradaDaCostura": "2024-02-01 17:29:25",
+  "quantidadeDeRetorno": 0
+}
+
+### Encontrar por status & segmento
+GET http://{{host}}/encontrarpor
+    ?status=costurando
+    &segmento=segmento 01
+
+### Encontrar todos
+GET http://{{host}}/encontrarpor/todos

@@ -1,0 +1,17 @@
+meta {
+  name: Atualizar dados de uma confeccao
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseURL}}/factory/atualizar/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "isNumberWhatsapp": true
+  }
+}

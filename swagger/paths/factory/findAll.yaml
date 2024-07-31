@@ -1,0 +1,43 @@
+tags:
+  - Confecção
+summary: Retorna todas as confecções
+description: Retorna todas as confecções
+produces:
+  - application/json
+consumes:
+  - application/json
+responses:
+  200:
+    description: Todas as confecções
+    content:
+      application/json:
+        schema:
+          type: object
+          $ref: ./find.definition.yaml
+  400:
+    summary: Se acontecer algum erro (que não seja de servidor) para retornar todas as confecções
+    description: Algum tipo de erro ao retornar todas as confecções
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              default: 'Algum erro aconteceu'
+  500:
+    description: Erro no servidor
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+              example: 500
+            message:
+              type: string
+              example: Servidor com erro

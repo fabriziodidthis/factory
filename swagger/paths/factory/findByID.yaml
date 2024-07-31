@@ -1,0 +1,33 @@
+tags:
+  - Confecção
+summary: Retorna dados da confecção pelo seu ID
+description: Retorna dados da confecção pelo seu ID
+produces:
+  - application/json
+consumes:
+  - application/json
+parameters:
+  - in: path
+    name: id
+    description: ID da confecção para busca
+    required: true
+    type: string
+responses:
+  200:
+    description: Retorna dados da confecção pelo seu ID
+    content:
+      application/json:
+        schema:
+          type: object
+          $ref: ./find.definition.yaml
+  404:
+    description: Busca de confecção por ID caso não seja encontrada
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              default: Confecção com id {id} não foi encontrada.
+              example: Confecção com id 1 não foi encontrada.

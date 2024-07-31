@@ -1,0 +1,18 @@
+meta {
+  name: Atualizar dados de um segmento
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseURL}}/segmento/atualizar/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "segmentName":"dry fit",
+    "price": 12.55
+  }
+}

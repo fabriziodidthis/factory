@@ -1,0 +1,59 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}/confeccao
+@contentType = application/json
+@createdAt = {{$datetime iso8601}}
+
+# @name Confeccao
+
+### Adiciona confeccao 01
+POST http://{{host}}/nova HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "factoryName": "confeccao 01",
+  "address": "endereco 01",
+  "phoneNumber": "12345678901",
+  "isNumberWhatsapp": true
+}
+
+### Adiciona confeccao 02
+POST http://{{host}}/nova HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "factoryName": "confeccao 02",
+  "address": "endereco 02",
+  "phoneNumber": "12345678902",
+  "isNumberWhatsapp": true,
+  "observation": "observacao 02"
+}
+
+### Confeccao com erro
+POST http://{{host}}/nova HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "factoryName": "confeccao 02",
+  "address": "endereco 02",
+  "phoneNumber": "123411199p9",
+  "isNumberWhatsapp": true
+}
+
+
+### Encontrar todas as confeccoes
+GET http://{{host}}/todas HTTP/1.1
+
+### Encontrar confeccao por ID
+GET http://{{host}}/encontrarpor/1 HTTP/1.1
+
+### Deletar confeccao por ID
+DELETE http://{{host}}/deletar/1 HTTP/1.1
+
+### Atualizar dados de uma confeccao
+PUT http://{{host}}/atualizar/2 HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "isNumberWhatsapp": true
+}

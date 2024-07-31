@@ -1,0 +1,26 @@
+type: object
+properties:
+  id:
+    type: string
+    default: 1
+    example: 1
+  factoryID:
+    type: string
+    example: 'b7d1808d-9f9b-4513-aaa8-da370411f418'
+  factoryName:
+    type: string
+    example: Confecção da maria
+  address:
+    type: string
+    example: Endereco da confecção da Maria
+  phoneNumber:
+    type: string
+    example: 11987654321
+  isNumberWhatsapp:
+    type: boolean
+    required: false
+    example: false
+  observation:
+    type: string
+    required: false
+    default: Alguma observacao opcional sobre a confecção da Maria

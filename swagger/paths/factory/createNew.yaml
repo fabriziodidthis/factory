@@ -1,0 +1,46 @@
+tags:
+  - Confecção
+summary: Cria uma nova confecção / fábrica
+description: Possui campos para poder criar uma nova confecção de acordo com a necessidade
+produces:
+  - application/json
+operationId: createNewFactory
+requestBody:
+  description: Objeto da nova confecção
+  content:
+    application/json:
+      schema:
+        required:
+          - factoryName
+          - address
+          - phoneNumber
+        properties:
+          factoryName:
+            type: string
+            default: Confecção da maria
+            example: Confecção da maria
+          address:
+            type: string
+            default: Endereco da confecção da Maria
+            example: Endereco da confecção da Maria
+          phoneNumber:
+            type: string
+            default: 11987654321
+            example: 11987654321
+responses:
+  201:
+    description: Nova confecção criada com sucesso
+    content:
+      application/json:
+        schema:
+          $ref: './createNew.definition.yaml'
+  400:
+    description: Algum tipo de erro ao criar nova confecção
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              default: 'Todos os campos devem ser preenchidos'
